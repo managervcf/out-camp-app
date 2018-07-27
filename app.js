@@ -20,7 +20,6 @@ const   Campground          = require("./models/campground"),
 // var seedDB = require("./seeds");
 // seedDB();        
 
-console.log(process.env.DATABASEURL);
 // Packages Configuration
 mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});     
 // mongoose.connect("mongodb://localhost:27017/yelp_camp_v13", {useNewUrlParser: true});
