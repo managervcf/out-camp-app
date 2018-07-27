@@ -8,22 +8,16 @@ const   bodyParser      = require("body-parser"),
         express         = require("express"),
         app             = express();
 
-// Require Models
-const   Campground          = require("./models/campground"),
-        Comment             = require("./models/comment"),
-        User                = require("./models/user"),
+// Require Models and Routes
+const   User                = require("./models/user"),
         commentRoutes       = require("./routes/comments"),
         campgroundRoutes    = require("./routes/campgrounds"),
         indexRoutes         = require("./routes/index");
-        
-// SEEDING DATABASE WITH NEW DATA
-// var seedDB = require("./seeds");
-// seedDB();        
+
+// Connect to MongoDB
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});     
 
 // Packages Configuration
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});     
-// mongoose.connect("mongodb://localhost:27017/yelp_camp_v13", {useNewUrlParser: true});
-
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -57,4 +51,3 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("YelpCamp server is running...");
 });
-
