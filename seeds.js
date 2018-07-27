@@ -36,7 +36,7 @@ var myData = [
     {
         name: "Waterfall Front",
         image: "https://www.discoverlosangeles.com/sites/default/files/styles/listography_image/public/Activities/Parks/saddleback-butte-tent.jpg",
-        description: "Set among ancient rainforests and eucalypt forests, this is a perfect base camp for exploring Tapin Tops National Park."
+        description: "Set among ancient rainforests and eucalyptus forests, this is a perfect base camp for exploring Tapin Tops National Park."
     },
     {
         name: "Purple Plains",

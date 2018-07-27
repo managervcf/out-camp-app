@@ -21,7 +21,9 @@ const   Campground          = require("./models/campground"),
 // seedDB();        
 
 // Packages Configuration
-mongoose.connect("mongodb://localhost:27017/yelp_camp_v13", {useNewUrlParser: true});     
+mongoose.connect("mongodb://managervcf:Kochamdomi1@ds155461.mlab.com:55461/yelpcamp_managervcf", {useNewUrlParser: true});     
+// mongoose.connect("mongodb://localhost:27017/yelp_camp_v13", {useNewUrlParser: true});
+
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
