@@ -15,7 +15,8 @@ const   User                = require("./models/user"),
         indexRoutes         = require("./routes/index");
 
 // Connect to MongoDB
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});     
+var dbUrl = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp_v13";
+mongoose.connect(dbUrl, {useNewUrlParser: true});     
 
 // Packages Configuration
 app.use(express.static(__dirname + "/public"));
