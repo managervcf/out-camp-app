@@ -1,16 +1,11 @@
 <% include ../partials/header %>
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-3">
-            <p class="lead text-center">YelpCamp</p>
-            <p class="text-center">World's Best Site containing the most beautiful campground locations on Earth!</p>
+        <nav class="col-md-3 pb-3 p-1">
             <a class="btn btn-block btn-sm mb-3" href="/campgrounds">
                 <i class="fas fa-chevron-left"></i>  View Campgrounds
             </a>
-            <div class="list-group">
-                <li class="list-group-item"><%= campground.name %> Info</li>
-                <li class="list-group-item">Comments</li>
-            </div>
+            <div id="map"></div>
         </nav>
         <main class="col-md-9">
             <div class="card">
@@ -65,4 +60,32 @@
         </main>
     </div>
 </div>
+<script>
+  function initMap() {
+    var lat = <%= campground.lat %>;
+    var lng = <%= campground.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= campground.name %><br />
+      <%= campground.location %></strong>
+      <p><%= campground.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwvrfZfrBSdmFX7FoPzpFXdbF7rRjcv-g&callback=initMap"></script>
 <% include ../partials/footer %>
