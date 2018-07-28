@@ -66,3 +66,9 @@ textarea {
 main .card {
   z-index: -1;
 }
+body > nav > a > i {
+  transition: all 300ms linear;
+}
+body > nav > a:hover > i {
+  transform: rotate(60deg);
+}
