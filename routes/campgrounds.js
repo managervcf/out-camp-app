@@ -91,7 +91,6 @@ router.get("/:id/edit", middleware.isUserCampgroundOwner, function(req, res) {
 // UPDATE CAMPGROUND ROUTE - Updates existing campground with new data
 router.put("/:id", middleware.isUserCampgroundOwner, function(req, res) {
     geocoder.geocode(req.body.campground.location, function (err, geoData) {
-        console.log(req.body.campground.location);
         if (err || !geoData.length) {
             console.log(err);
             req.flash('error', 'Invalid address');
