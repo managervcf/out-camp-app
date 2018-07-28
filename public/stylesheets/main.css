@@ -9,6 +9,7 @@ form {
 }
 
 .card {
+  position: static;
   z-index: 1;
   overflow: hidden;
   border-radius: 15px;
