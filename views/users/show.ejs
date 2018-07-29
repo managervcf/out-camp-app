@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 <div class="containter-fluid">
     <div class="row">
-        <nav class="col-sm-5 col-md-4 col-lg-3">
+        <nav class="col-md-4">
             <div class="card">
               <img class="card-img-top" src="<%= user.avatar %>" alt="<%= user.username %>">
               <div class="card-body">
@@ -32,33 +32,32 @@
               </div>
             </div>
         </nav>
-        <main class="col-sm-7 col-md-8 col-lg-9">
-            <h4 class="text-center">
-                Campgrounds added by <%= user.username %>:
-            </h4>
-            <% if (campgrounds) { %>  
-                <% campgrounds.forEach(function(camp){ %>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="card">
-                            <a href="/campgrounds/<%= camp._id %>">
-                                <img class="card-img-top" src="<%= camp.image %>" alt="Image of <%= camp.image %>">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title"><%= camp.name %></h5>
-                                <p class="card-text">
-                                    <% if(camp.description.length >= 50) { %>
-                                        <%= camp.description.substring(0, 50) %>...
-                                    <% } else { %>
-                                        <%= camp.description %>
-                                    <% }; %>
-                                </p>
+        <main class="col-md-8">
+            <div class="row">
+                <% if (campgrounds) { %>  
+                    <% campgrounds.forEach(function(camp){ %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card">
+                                <a href="/campgrounds/<%= camp._id %>">
+                                    <img class="card-img-top" src="<%= camp.image %>" alt="Image of <%= camp.image %>">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= camp.name %></h5>
+                                    <p class="card-text">
+                                        <% if(camp.description.length >= 50) { %>
+                                            <%= camp.description.substring(0, 50) %>...
+                                        <% } else { %>
+                                            <%= camp.description %>
+                                        <% }; %>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <% }); %>
-            <% } else { %>
-                <p class="card-text text-center">Oops! No campgrounds created yet!</p>
-            <% } %>
+                    <% }); %>
+                <% } else { %>
+                    <p class="card-text text-center">Oops! No campgrounds created yet!</p>
+                <% } %>
+            </div>
         </main>
     </div>
 </div>
