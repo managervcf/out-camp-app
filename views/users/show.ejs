@@ -1,23 +1,27 @@
 <% include ../partials/header %>
 <div class="containter-fluid">
     <div class="row">
-        <nav class="col-md-3">
+        <nav class="col-sm-5 col-md-4 col-lg-3">
             <div class="card">
               <img class="card-img-top" src="<%= user.avatar %>" alt="<%= user.username %>">
               <div class="card-body">
-                <h4 class="card-title">
+                <h4 class="card-title text-center">
                     <% function capitalizeFirstLetter(string) {
                         return string.charAt(0).toUpperCase() + string.slice(1);
                     } %>
                     <%= capitalizeFirstLetter(user.firstName) %> <%= capitalizeFirstLetter(user.lastName) %>
                 </h4>
-                <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="card-text text-center text-secondary text-justify">
+                    <a href="mailto:<%= user.email %>"><%= user.email %></a>
+                </p>
+                <p class="card-text text-center">
+                    <%= user.bio %>
+                </p>
+                <p class="card-text text-center">
+                    Campgrounds created: <strong><%= campgrounds.length %></strong>
+                </p>
+                <p class="card-text text-center">
+                    Comments added: <strong><%= comments.length %></strong>
                 </p>
                 <% if (currentUser && user._id.equals(currentUser._id)) { %>
                     <a class="m-auto btn btn-sm btn-warning btn-block" href="/campgrounds/<%= user._id %>/edit">Edit Profile</a>
@@ -28,9 +32,33 @@
               </div>
             </div>
         </nav>
-        <main class="col-md-9">
-            <h3><%= user.firstName %>'s Campgrounds</h3>
-            <p></p>
+        <main class="col-sm-7 col-md-8 col-lg-9">
+            <h4 class="text-center">
+                Campgrounds added by <%= user.username %>:
+            </h4>
+            <% if (campgrounds) { %>  
+                <% campgrounds.forEach(function(camp){ %>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card">
+                            <a href="/campgrounds/<%= camp._id %>">
+                                <img class="card-img-top" src="<%= camp.image %>" alt="Image of <%= camp.image %>">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title"><%= camp.name %></h5>
+                                <p class="card-text">
+                                    <% if(camp.description.length >= 50) { %>
+                                        <%= camp.description.substring(0, 50) %>...
+                                    <% } else { %>
+                                        <%= camp.description %>
+                                    <% }; %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p class="card-text text-center">Oops! No campgrounds created yet!</p>
+            <% } %>
         </main>
     </div>
 </div>

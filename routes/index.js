@@ -22,6 +22,7 @@ router.post("/register", function(req, res) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
+        bio: req.body.bio,
         avatar: req.body.avatar,
     });
     if (req.body.adminCode === "dupakupa1") {
@@ -60,15 +61,29 @@ router.get("/logout", function(req, res) {
 
 // USER PROFILE Route
 router.get("/users/:id", function(req, res) {
-   User.findById(req.params.id, function(err, foundUser) {
-       if (err) {
-           console.log(err);
-           req.flash("error", "Something went wrong, cannot find given user");
-           res.redirect("back");
-       } else {
-           res.render("users/show", {user: foundUser});
-       }
-   }); 
+    User.findById(req.params.id, function(err, foundUser) {
+        if (err) {
+            console.log(err);
+            req.flash("error", "Something went wrong, cannot find given user");
+            res.redirect("back");
+        } else {
+            Campground.find().where("author.id").equals(foundUser._id).exec(function(err, userCampgrounds) {
+                if (err) {
+                   console.log(err);
+                   res.redirect("back");
+                } else {
+                    Comment.find().where("author.id").equals(foundUser._id).exec(function(err, userComments) {
+                        if (err) {
+                            console.log(err);
+                            res.redirect("back");
+                        } else {
+                            res.render("users/show", {user: foundUser, campgrounds: userCampgrounds, comments: userComments});
+                        }
+                    });
+                }
+            });
+        }
+    }); 
 });
 
 module.exports = router;
