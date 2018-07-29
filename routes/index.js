@@ -17,11 +17,16 @@ router.get("/register", function(req, res) {
 });
 
 router.post("/register", function(req, res) {
-    var newUser = new User({username: req.body.username, isAdmin: false});
+    var newUser = new User({
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        avatar: req.body.avatar,
+    });
     if (req.body.adminCode === "dupakupa1") {
         newUser.isAdmin = true;
     }
-    console.log(newUser.isAdmin);
     console.log(newUser);
     User.register(newUser, req.body.password, function(err, user) {
         if (err) {
@@ -49,9 +54,21 @@ router.post("/login", passport.authenticate("local",
 
 router.get("/logout", function(req, res) {
     req.logout();
-    req.flash("success", "Successfully logged out")
+    req.flash("success", "Successfully logged out");
     res.redirect("/campgrounds");
 });
 
+// USER PROFILE Route
+router.get("/users/:id", function(req, res) {
+   User.findById(req.params.id, function(err, foundUser) {
+       if (err) {
+           console.log(err);
+           req.flash("error", "Something went wrong, cannot find given user");
+           res.redirect("back");
+       } else {
+           res.render("users/show", {user: foundUser});
+       }
+   }); 
+});
 
 module.exports = router;

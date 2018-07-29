@@ -6,8 +6,12 @@
     <main class="row text-center" id="newCampForm">
         <form action="/register" method="POST">
             <div class="form-group">
-                <input class="form-control mb-2" type="text" name="username" placeholder="Username">
-                <input class="form-control mb-2" type="password" name="password" placeholder="Password">
+                <input class="form-control mb-2" type="text" name="username" placeholder="Username" required>
+                <input class="form-control mb-2" type="password" name="password" placeholder="Password" required>
+                <input class="form-control mb-2" type="text" name="firstName" placeholder="First Name"required>
+                <input class="form-control mb-2" type="text" name="lastName" placeholder="Last Name" required>
+                <input class="form-control mb-2" type="email" name="email" placeholder="Email" required>
+                <input class="form-control mb-2" type="text" name="avatar" placeholder="Avatar Image Link">
                 <input class="form-control mb-2" type="password" name="adminCode" placeholder="Admin Code (optional)">
                 <button type="submit" class="btn btn-success mb-2 btn-block">Sign Up</button>
                 <a class="btn btn-sm btn-link mb-2" href="/campgrounds">Go Back</a>
