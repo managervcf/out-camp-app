@@ -11,8 +11,8 @@
                     } %>
                     <%= capitalizeFirstLetter(user.firstName) %> <%= capitalizeFirstLetter(user.lastName) %>
                 </h4>
-                <p class="card-text text-center text-secondary text-justify">
-                    <a href="mailto:<%= user.email %>"><%= user.email %></a>
+                <p class="card-text text-center">
+                    <a class="profileUsername lead text-secondary" href="mailto:<%= user.email %>">@<%= user.username %></a>
                 </p>
                 <p class="card-text text-center">
                     <%= user.bio %>

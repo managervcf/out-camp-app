@@ -72,3 +72,7 @@ body > nav > a > i {
 body > nav > a:hover > i {
   transform: rotate(60deg);
 }
+
+.profileUsername:hover {
+  text-decoration: none;
+}
