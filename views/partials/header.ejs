@@ -9,7 +9,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
-          <a class="navbar-brand" href="/"><i class="fab fa-bandcamp"></i><strong> YelpCamp</strong></a>
+          <a class="navbar-brand" href="/campgrounds"><i class="fab fa-bandcamp"></i><strong> YelpCamp</strong></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -23,7 +23,7 @@
                   <a class="nav-link" href="/login"><i class="fas fa-unlock-alt"></i> Login</a>
                 </li>
               <% } else if (currentUser.isAdmin) { %>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/users/<%= currentUser._id %>">
                   <img src="<%= currentUser.avatar %>" height="30" alt="">
                 </a>
                 <li class="nav-item">
@@ -33,7 +33,7 @@
                   <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
               <% } else { %>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/users/<%= currentUser._id %>">
                   <img src="<%= currentUser.avatar %>" height="30" alt="">
                 </a>
                 <li class="nav-item">

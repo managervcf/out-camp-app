@@ -10,7 +10,7 @@
     <main class="row">
         <% campgrounds.forEach(function(camp){ %>
             <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="card">
+                <div class="card cardAnimation">
                     <a href="/campgrounds/<%= camp._id %>">
                         <img class="card-img-top" src="<%= camp.image %>" alt="Image of <%= camp.image %>">
                     </a>

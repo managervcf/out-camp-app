@@ -23,21 +23,20 @@
                 <p class="card-text text-center">
                     Comments added: <strong><%= comments.length %></strong>
                 </p>
+                <a class="m-auto btn btn-sm btn-success btn-block mb-lg-2" href="/campgrounds/new">Add New Campground</a>
                 <% if (currentUser && user._id.equals(currentUser._id)) { %>
                     <a class="m-auto btn btn-sm btn-warning btn-block" href="/campgrounds/<%= user._id %>/edit">Edit Profile</a>
-                    <form class="btn-group" action="/campgrounds/<%= user._id %>?_method=DELETE" method="POST">
-                        <button class="m-auto btn btn-sm btn-danger btn-block">Delete Profile</button>
-                    </form>
                 <% } %>
               </div>
             </div>
         </nav>
         <main class="col-md-8">
             <div class="row">
+                
                 <% if (campgrounds) { %>  
                     <% campgrounds.forEach(function(camp){ %>
                         <div class="col-lg-4 col-md-6">
-                            <div class="card">
+                            <div class="card cardAnimation">
                                 <a href="/campgrounds/<%= camp._id %>">
                                     <img class="card-img-top" src="<%= camp.image %>" alt="Image of <%= camp.image %>">
                                 </a>
@@ -55,7 +54,7 @@
                         </div>
                     <% }); %>
                 <% } else { %>
-                    <p class="card-text text-center">Oops! No campgrounds created yet!</p>
+                    <h3 class="text-center">Oops! No campgrounds created yet!</h3>
                 <% } %>
             </div>
         </main>

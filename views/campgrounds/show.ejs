@@ -42,17 +42,16 @@
                         Reviews
                         <a class="btn btn-info float-right" href="/campgrounds/<%= campground._id %>/comments/new">Leave a Review</a>
                     </h4>
-                    <hr>
                     <% campground.comments.forEach(function(comment) { %>
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="card-text mt-2 mb-2">
-                                    <em><%= comment.text %></em>
+                                    <%= comment.text %>
                                     <span class="float-right">
-                                      <strong>
+                                      <em>
                                         <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, 
-                                      </strong>
-                                      <%= moment(comment.createdAt).fromNow() %>
+                                        <%= moment(comment.createdAt).fromNow() %>
+                                      </em>
                                     </span>
                                     <% if (currentUser && (comment.author.id.equals(currentUser._id) || currentUser.isAdmin)) { %>
                                         <form class="float-right" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
