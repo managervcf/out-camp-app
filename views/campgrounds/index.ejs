@@ -26,6 +26,13 @@
                             <%= camp.description %>
                             <% }; %>
                         </p>
+                        <p class="card-text text-right text-secondary">
+                            <% if (camp.comments.length === 1) { %>
+                                <%= camp.comments.length %> Comment
+                            <% } else { %>
+                                <%= camp.comments.length %> Comments
+                            <% } %>
+                        </p>
                     </div>
                 </div>
             </div>
