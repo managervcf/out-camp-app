@@ -12,7 +12,13 @@
                     <%= capitalizeFirstLetter(user.firstName) %> <%= capitalizeFirstLetter(user.lastName) %>
                 </h4>
                 <p class="card-text text-center">
-                    <a class="profileUsername lead text-secondary" href="mailto:<%= user.email %>">@<%= user.username %></a>
+                    <a class="profileUsername lead text-secondary" href="mailto:<%= user.email %>">
+                        @<%= user.username %>
+                        <% if (user.isAdmin) { %>
+                            <span> (Admin)</span>
+                        <% } %>
+                    </a>
+                    
                 </p>
                 <p class="card-text text-center">
                     <%= user.bio %>
@@ -23,9 +29,13 @@
                 <p class="card-text text-center">
                     Comments added: <strong><%= comments.length %></strong>
                 </p>
-                <a class="m-auto btn btn-sm btn-success btn-block mb-lg-2" href="/campgrounds/new">Add New Campground</a>
                 <% if (currentUser && user._id.equals(currentUser._id)) { %>
-                    <a class="m-auto btn btn-sm btn-warning btn-block" href="/campgrounds/<%= user._id %>/edit">Edit Profile</a>
+                    <div class="card-item text-center mb-2">
+                        <a class="m-auto btn btn-sm btn-success" href="/campgrounds/new">Add New Campground</a>
+                    </div>
+                    <div class="card-item text-center">
+                        <a class="m-auto btn btn-sm btn-warning" href="/campgrounds/<%= user._id %>/edit">Edit Profile</a>
+                    </div>
                 <% } %>
               </div>
             </div>
