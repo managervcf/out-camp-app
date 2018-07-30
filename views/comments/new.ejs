@@ -6,7 +6,7 @@
     <main class="row text-center" id="newCampForm">
         <form action="/campgrounds/<%= campground._id  %>/comments" method="POST">
             <div class="form-group">
-                <textarea id="commentText" class="form-control mb-2" name="comment[text]" placeholder="What a lovely spot! Would come back for sure!"></textarea>
+                <textarea id="commentText" class="form-control mb-2" name="comment[text]" placeholder="What do you think about <%= campground.name %>?"></textarea>
                 <button type="submit" class="btn btn-info mb-2 btn-block">Comment</button>
                 <a class="mr-auto btn btn-sm btn-link mb-2 btn-block" href="/campgrounds/<%= campground._id  %>">Go Back</a>
             </div>

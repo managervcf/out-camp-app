@@ -4,7 +4,7 @@
         <h1>Edit Your Review of <strong><%= campground.name %></strong></h1>
     </header>
     <main class="row text-center" id="newCampForm">
-        <form action="/campgrounds/<%= campground._id  %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+        <form class="formPage" action="/campgrounds/<%= campground._id  %>/comments/<%= comment._id %>?_method=PUT" method="POST">
             <div class="form-group">
                 <textarea id="commentText" class="form-control mb-2" name="comment[text]"><%= comment.text %></textarea>
                 <button type="submit" class="btn btn-warning mb-2 btn-block">Edit</button>
