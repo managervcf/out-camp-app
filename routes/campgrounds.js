@@ -19,7 +19,6 @@ var geocoder = nodeGeocoder(options);
 router.get("/", function(req, res){
     var noMatch = null;
     if (req.query.search) {
-        console.log("Search query: " + req.query.search);
         var regex = new RegExp(escapeRegex(req.query.search), 'gi');
         Campground.find({name: regex}, function(err, allCampgrounds){
             if (err){
@@ -44,9 +43,7 @@ router.get("/", function(req, res){
 
 // CREATE ROUTE - Adds new campground to the database
 router.post("/", middleware.isLoggedIn, function(req, res){
-    console.log(req.body.location);
     geocoder.geocode(req.body.location, function (err, geoData) {
-        console.log(req.body.location);
         if (err || !geoData.length) {
             console.log(err);
             req.flash('error', err);

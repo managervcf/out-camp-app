@@ -75,3 +75,13 @@ body > nav > a:hover > i {
 .profileUsername:hover {
   text-decoration: none;
 }
+
+.rounded-circle {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.rounded-circle:hover {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+  transform: scale(1.05);
+}
