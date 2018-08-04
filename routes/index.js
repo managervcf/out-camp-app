@@ -17,13 +17,17 @@ router.get("/register", function(req, res) {
 });
 
 router.post("/register", function(req, res) {
+    var newAvatar = User.avatar;
+    if (req.body.avatar) {
+        newAvatar = req.body.avatar;
+    }
     var newUser = new User({
         username: req.body.username,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         bio: req.body.bio,
-        avatar: req.body.avatar,
+        avatar: newAvatar,
     });
     if (req.body.adminCode === "dupakupa1") {
         newUser.isAdmin = true;

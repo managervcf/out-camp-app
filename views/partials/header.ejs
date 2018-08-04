@@ -27,7 +27,7 @@
                 </li>
               <% } else if (currentUser.isAdmin) { %>
                 <a class="navbar-brand mr-1" href="/users/<%= currentUser._id %>">
-                  <img class="rounded-circle" src="<%= currentUser.avatar %>" height="35" alt="Avatar of <%= currentUser.name %>">
+                  <img class="rounded-circle mr-1" src="<%= currentUser.avatar %>" height="35" alt="Avatar of <%= currentUser.name %>">
                 </a>
                 <li class="nav-item">
                   <span class="nav-link text-secondary"><%= currentUser.username %> (Admin), Are you ready to explore?</span>
@@ -37,7 +37,7 @@
                 </li>
               <% } else { %>
                 <a class="navbar-brand" href="/users/<%= currentUser._id %>">
-                  <img class="rounded-circle mr-1" src="<%= currentUser.avatar %>" height="35" alt="">
+                  <img class="rounded-circle mr-1" src="<%= currentUser.avatar %>" height="35">
                 </a>
                 <li class="nav-item">
                   <span class="nav-link text-secondary"><%= currentUser.username %>, ready for camping?</span>
