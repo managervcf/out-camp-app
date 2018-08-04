@@ -11,6 +11,9 @@
         <% if (noMatch) { %>
             <h4 class=" text-center mb-4 ml-auto mr-auto"><%= noMatch %></h4>
         <% } %>
+        <% campgrounds.sort(function(a, b) { %>
+            <% return (Math.round(Math.random())-0.5); %>
+        <% }); %>
         <% campgrounds.forEach(function(camp){ %>
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="card cardAnimation">
