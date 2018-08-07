@@ -91,7 +91,7 @@ router.get("/users/:id", function(req, res) {
 });
 
 // EDIT USER PROFILE 
-router.get("/users/:id/edit",middleware.isUserAuthorized, function(req, res) {
+router.get("/users/:id/edit", middleware.isUserAuthorized, function(req, res) {
    User.findById(req.params.id, function(err, foundUser) {
        if (err) {
            console.log(err);
@@ -102,7 +102,7 @@ router.get("/users/:id/edit",middleware.isUserAuthorized, function(req, res) {
    }); 
 });
 
-router.put("/users/:id",middleware.isUserAuthorized, function(req, res) {
+router.put("/users/:id", middleware.isUserAuthorized, function(req, res) {
     if (!isImageURL(req.body.user.avatar)) {
         req.body.user.avatar = "http://i.imgur.com/HQ3YU7n.gif";
     }
