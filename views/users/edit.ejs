@@ -10,9 +10,9 @@
                 <input class="form-control mb-2" type="email" name="user[email]" value="<%= user.email %>" required>
                 <textarea class="form-control mb-2" name="user[bio]"><%= user.bio %></textarea>
                 <% if (user.avatar === "http://i.imgur.com/HQ3YU7n.gif") { %>
-                    <input class="form-control mb-3" type="text" name="user[avatar]" required>
+                    <input class="form-control mb-3" type="link" name="user[avatar]" required>
                 <% } else { %>
-                    <input class="form-control mb-3" type="text" name="user[avatar]" value="<%= user.avatar %>" required>
+                    <input class="form-control mb-3" type="link" name="user[avatar]" value="<%= user.avatar %>" required>
                 <% } %>
                 <button type="submit" class="btn btn-warning mb-2 btn-block">Update</button>
                 <a class="btn btn-sm btn-link" href="/users/<%= user._id %>">Go Back</a>
