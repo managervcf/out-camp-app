@@ -4,7 +4,8 @@ const   express     = require("express"),
         
 const   Campground  = require("../models/campground"),
         Comment     = require("../models/comment"),
-        User        = require("../models/user");
+        User        = require("../models/user"),
+        middleware  = require("../middleware");
 
 // HOME ROUTE - Home page
 router.get("/", function(req, res){
@@ -17,9 +18,8 @@ router.get("/register", function(req, res) {
 });
 
 router.post("/register", function(req, res) {
-    var newAvatar = User.avatar;
-    if (req.body.avatar) {
-        newAvatar = req.body.avatar;
+    if (!isImageURL(req.body.avatar)) {
+        req.body.avatar = "http://i.imgur.com/HQ3YU7n.gif";
     }
     var newUser = new User({
         username: req.body.username,
@@ -27,7 +27,7 @@ router.post("/register", function(req, res) {
         lastName: req.body.lastName,
         email: req.body.email,
         bio: req.body.bio,
-        avatar: newAvatar,
+        avatar: req.body.avatar
     });
     if (req.body.adminCode === "dupakupa1") {
         newUser.isAdmin = true;
@@ -89,5 +89,36 @@ router.get("/users/:id", function(req, res) {
         }
     }); 
 });
+
+// EDIT USER PROFILE 
+router.get("/users/:id/edit",middleware.isUserAuthorized, function(req, res) {
+   User.findById(req.params.id, function(err, foundUser) {
+       if (err) {
+           console.log(err);
+           res.redirect("back");
+       } else {
+           res.render("users/edit", {user: foundUser});
+       }
+   }); 
+});
+
+router.put("/users/:id",middleware.isUserAuthorized, function(req, res) {
+    if (!isImageURL(req.body.user.avatar)) {
+        req.body.user.avatar = "http://i.imgur.com/HQ3YU7n.gif";
+    }
+    User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser) {
+        if (err) {
+            console.log(err);
+            res.redirect("back");
+        } else {
+            req.flash("success", "Updated user profile");
+            res.redirect("/users/" + req.params.id);
+        }
+   }); 
+});
+
+function isImageURL(url) {
+    return ((url.match(/\.(jpeg|jpg|gif|png)$/) != null) || url.startsWith("https://secure.gravatar.com/avatar/"));
+}
 
 module.exports = router;
