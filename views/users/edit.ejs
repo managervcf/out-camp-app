@@ -5,14 +5,14 @@
           <img class="card-img-top" src="<%= user.avatar %>" alt="<%= user.username %>">
           <div class="card-body">
             <form class="text-center" action="/users/<%= user._id %>/?_method=PUT" method="POST">
-                <input class="form-control mb-2" type="text" name="user[firstName]" value="<%= user.firstName %>">      
-                <input class="form-control mb-2" type="text" name="user[lastName]" value="<%= user.lastName %>">
-                <input class="form-control mb-2" type="text" name="user[email]" value="<%= user.email %>">
+                <input class="form-control mb-2" type="text" name="user[firstName]" value="<%= user.firstName %>" required>      
+                <input class="form-control mb-2" type="text" name="user[lastName]" value="<%= user.lastName %>" required>
+                <input class="form-control mb-2" type="email" name="user[email]" value="<%= user.email %>" required>
                 <textarea class="form-control mb-2" name="user[bio]"><%= user.bio %></textarea>
                 <% if (user.avatar === "http://i.imgur.com/HQ3YU7n.gif") { %>
-                    <input class="form-control mb-3" type="text" name="user[avatar]">
+                    <input class="form-control mb-3" type="text" name="user[avatar]" required>
                 <% } else { %>
-                    <input class="form-control mb-3" type="text" name="user[avatar]" value="<%= user.avatar %>">
+                    <input class="form-control mb-3" type="text" name="user[avatar]" value="<%= user.avatar %>" required>
                 <% } %>
                 <button type="submit" class="btn btn-warning mb-2 btn-block">Update</button>
                 <a class="btn btn-sm btn-link" href="/users/<%= user._id %>">Go Back</a>
