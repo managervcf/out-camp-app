@@ -15,7 +15,7 @@ const   User                = require("./models/user"),
         indexRoutes         = require("./routes/index");
 
 // Connect to MongoDB
-var dbUrl = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp_v13";
+var dbUrl = process.env.DATABASEURL || "mongodb://localhost:27017/out_camp";
 mongoose.connect(dbUrl, {useNewUrlParser: true});     
 
 // Packages Configuration
@@ -51,5 +51,5 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 
 // Server Listener
 app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("YelpCamp server is running...");
+    console.log("OutCamp server is running...");
 });
