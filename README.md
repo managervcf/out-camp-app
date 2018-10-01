@@ -1,0 +1,1 @@
+OutCamp App is featuring user-picked campgrounds located all over the world. Created with Node.js, Express, MongoDB and EJS templating engine.
