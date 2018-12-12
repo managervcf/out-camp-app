@@ -1,5 +1,6 @@
 module.exports = {
 	geocoderAPIKey: process.env.GEOCODER_API_KEY,
 	databaseURI: process.env.DATABASE_URI,
-	mapsAPIKey: process.env.MAPS_API_KEY
+	mapsAPIKey: process.env.MAPS_API_KEY,
+	adminCode: process.env.ADMIN_CODE
 };

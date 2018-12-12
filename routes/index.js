@@ -7,6 +7,9 @@ const   Campground  = require("../models/campground"),
         User        = require("../models/user"),
         middleware  = require("../middleware");
 
+// import keys
+const keys = require('../config/keys');
+
 // HOME ROUTE - Home page
 router.get("/", function(req, res){
     res.render("home");
@@ -29,7 +32,7 @@ router.post("/register", function(req, res) {
         bio: req.body.bio,
         avatar: req.body.avatar
     });
-    if (req.body.adminCode === "dupakupa1") {
+    if (req.body.adminCode === keys.adminCode) {
         newUser.isAdmin = true;
     }
     console.log(newUser);
