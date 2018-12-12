@@ -1,71 +1,71 @@
 <% include ../partials/header %>
 <div class="container-fluid">
-    <div class="row">
-        <nav class="col-lg-3 col-md-5 col-sm-7">
-            <div class="card">
-              <img class="card-img-top" src="<%= user.avatar %>" alt="<%= user.username %>">
-              <div class="card-body">
-                <h4 class="card-title text-center">
-                    <% function capitalizeFirstLetter(string) {
-                        return string.charAt(0).toUpperCase() + string.slice(1);
-                    } %>
-                    <%= capitalizeFirstLetter(user.firstName) %> <%= capitalizeFirstLetter(user.lastName) %>
-                </h4>
-                <p class="card-text text-center">
-                    <a class="profileUsername lead text-secondary" href="mailto:<%= user.email %>">
-                        @<%= user.username %>
-                        <% if (user.isAdmin) { %>
-                            <span> (Admin)</span>
-                        <% } %>
-                    </a>
-                </p>
-                <p class="card-text text-center">
-                    <%= user.bio %>
-                </p>
-                <p class="card-text text-center">
-                    Campgrounds created: <strong><%= campgrounds.length %></strong>
-                </p>
-                <p class="card-text text-center">
-                    Comments added: <strong><%= comments.length %></strong>
-                </p>
-                <% if (currentUser && user._id.equals(currentUser._id)) { %>
-                    <div class="card-item text-center mb-2">
-                        <a class="m-auto btn btn-sm btn-success" href="/campgrounds/new">Add New Campground</a>
-                    </div>
-                    <div class="card-item text-center">
-                        <a class="m-auto btn btn-sm btn-warning" href="/users/<%= user._id %>/edit">Edit Profile</a>
-                    </div>
-                <% } %>
+  <div class="row">
+    <nav class="col-lg-3 col-md-5 col-sm-7">
+      <div class="card">
+        <img class="card-img-top" src="<%= user.avatar %>" alt="<%= user.username %>">
+        <div class="card-body">
+          <h4 class="card-title text-center">
+            <% function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            } %>
+            <%= capitalizeFirstLetter(user.firstName) %> <%= capitalizeFirstLetter(user.lastName) %>
+          </h4>
+          <p class="card-text text-center">
+            <a class="profileUsername lead text-secondary" href="mailto:<%= user.email %>">
+              @<%= user.username %>
+              <% if (user.isAdmin) { %>
+                  <span> (Admin)</span>
+              <% } %>
+            </a>
+          </p>
+          <p class="card-text text-center">
+            <%= user.bio %>
+          </p>
+          <p class="card-text text-center">
+            Campgrounds created: <strong><%= campgrounds.length %></strong>
+          </p>
+          <p class="card-text text-center">
+            Comments added: <strong><%= comments.length %></strong>
+          </p>
+          <% if (currentUser && user._id.equals(currentUser._id)) { %>
+            <div class="card-item text-center mb-2">
+              <a class="m-auto btn btn-sm btn-success" href="/campgrounds/new">Add New Campground</a>
+            </div>
+            <div class="card-item text-center">
+              <a class="m-auto btn btn-sm btn-warning" href="/users/<%= user._id %>/edit">Edit Profile</a>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </nav>
+    <main class="col-lg-9 col-md-7 col-sm-5">
+      <div class="row">
+        <% if (campgrounds) { %>  
+          <% campgrounds.forEach(function(camp){ %>
+            <div class="col-lg-4 col-md-6">
+              <div class="card cardAnimation">
+                <a href="/campgrounds/<%= camp._id %>">
+                  <img class="card-img-top" src="<%= camp.image %>" alt="Image of <%= camp.image %>">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title"><%= camp.name %></h5>
+                  <p class="card-text">
+                    <% if(camp.description.length >= 50) { %>
+                      <%= camp.description.substring(0, 50) %>...
+                    <% } else { %>
+                      <%= camp.description %>
+                    <% }; %>
+                  </p>
+                </div>
               </div>
             </div>
-        </nav>
-        <main class="col-lg-9 col-md-7 col-sm-5">
-            <div class="row">
-                <% if (campgrounds) { %>  
-                    <% campgrounds.forEach(function(camp){ %>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card cardAnimation">
-                                <a href="/campgrounds/<%= camp._id %>">
-                                    <img class="card-img-top" src="<%= camp.image %>" alt="Image of <%= camp.image %>">
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title"><%= camp.name %></h5>
-                                    <p class="card-text">
-                                        <% if(camp.description.length >= 50) { %>
-                                            <%= camp.description.substring(0, 50) %>...
-                                        <% } else { %>
-                                            <%= camp.description %>
-                                        <% }; %>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    <% }); %>
-                <% } else { %>
-                    <h3 class="text-center">Oops! No campgrounds created yet!</h3>
-                <% } %>
-            </div>
-        </main>
-    </div>
+          <% }); %>
+        <% } else { %>
+          <h3 class="text-center">Oops! No campgrounds created yet!</h3>
+        <% } %>
+      </div>
+    </main>
+  </div>
 </div>
 <% include ../partials/footer %>

@@ -1,23 +1,23 @@
 <% include ./partials/header %>
 <div class="container-fluid">
-    <header class="jumbotron text-center p-2">
-        <h1><i class="fas fa-user-plus"></i> Sign Up</h1>
-    </header>
-    <main class="row text-center" id="newCampForm">
-        <form class="formPage" action="/register" method="POST">
-            <div class="form-group">
-                <input class="form-control mb-2" type="text" name="username" placeholder="Username" required>
-                <input class="form-control mb-2" type="password" name="password" placeholder="Password" required>
-                <input class="form-control mb-2" type="text" name="firstName" placeholder="First Name"required>
-                <input class="form-control mb-2" type="text" name="lastName" placeholder="Last Name" required>
-                <input class="form-control mb-2" type="email" name="email" placeholder="Email" required>
-                <textarea class="form-control mb-2" name="bio" placeholder="Short Bio..."></textarea>
-                <input class="form-control mb-2" type="text" name="avatar" placeholder="Avatar Image Link">
-                <input class="form-control mb-2" type="password" name="adminCode" placeholder="Admin Code (optional)">
-                <button type="submit" class="btn btn-success mb-2 btn-block">Sign Up</button>
-                <a class="btn btn-sm btn-link mb-2" href="/campgrounds">Go Back</a>
-            </div>
-        </form>
-    </main>
+  <header class="jumbotron text-center p-2">
+    <h1><i class="fas fa-user-plus"></i> Sign Up</h1>
+  </header>
+  <main class="row text-center" id="newCampForm">
+    <form class="formPage" action="/register" method="POST">
+      <div class="form-group">
+        <input class="form-control mb-2" type="text" name="username" placeholder="Username" required>
+        <input class="form-control mb-2" type="password" name="password" placeholder="Password" required>
+        <input class="form-control mb-2" type="text" name="firstName" placeholder="First Name"required>
+        <input class="form-control mb-2" type="text" name="lastName" placeholder="Last Name" required>
+        <input class="form-control mb-2" type="email" name="email" placeholder="Email" required>
+        <textarea class="form-control mb-2" name="bio" placeholder="Short Bio..."></textarea>
+        <input class="form-control mb-2" type="text" name="avatar" placeholder="Avatar Image Link">
+        <input class="form-control mb-2" type="password" name="adminCode" placeholder="Admin Code (optional)">
+        <button type="submit" class="btn btn-success mb-2 btn-block">Sign Up</button>
+        <a class="btn btn-sm btn-link mb-2" href="/campgrounds">Go Back</a>
+      </div>
+    </form>
+  </main>
 </div>
 <% include ./partials/footer %>

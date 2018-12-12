@@ -1,20 +1,20 @@
 <% include ../partials/header %>
 <div class="container-fluid">
-    <header class="jumbotron text-center p-2">
-        <h1>Create a New Campground</h1>
-    </header>
-    <main class="row text-center" id="newCampForm">
-        <form class="formPage" action="/campgrounds" method="POST">
-            <div class="form-group">
-                <input class="form-control mb-2" type="text" name="name" placeholder="Campground Name" required>
-                <input class="form-control mb-2" type="number" name="price" placeholder="Price for night ($)" min="0" step="0.5" required>
-                <textarea class="form-control mb-2" name="description" required>Description...</textarea>
-                <input class="form-control mb-2" name="location" type="text" placeholder="Location of the campground" required>
-                <input class="form-control mb-3" type="link" name="image" placeholder="Image Link" required>
-                <button type="submit" class="btn btn-success mb-2 btn-block">Create</button>
-                <a class="btn btn-sm btn-link mb-2" href="/campgrounds">Go Back</a>
-            </div>
-        </form>
-    </main>
+  <header class="jumbotron text-center p-2">
+    <h1>Create a New Campground</h1>
+  </header>
+  <main class="row text-center" id="newCampForm">
+    <form class="formPage" action="/campgrounds" method="POST">
+      <div class="form-group">
+        <input class="form-control mb-2" type="text" name="name" placeholder="Campground Name" required>
+        <input class="form-control mb-2" type="number" name="price" placeholder="Price for night ($)" min="0" step="0.5" required>
+        <textarea class="form-control mb-2" name="description" required>Description...</textarea>
+        <input class="form-control mb-2" name="location" type="text" placeholder="Location of the campground" required>
+        <input class="form-control mb-3" type="link" name="image" placeholder="Image Link" required>
+        <button type="submit" class="btn btn-success mb-2 btn-block">Create</button>
+        <a class="btn btn-sm btn-link mb-2" href="/campgrounds">Go Back</a>
+      </div>
+    </form>
+  </main>
 </div>
 <% include ../partials/footer %>

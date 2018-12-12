@@ -1,16 +1,16 @@
 <% include ../partials/header %>
 <div class="container-fluid">
-    <header class="jumbotron text-center p-2">
-        <h1>Add Your Review of <strong><%= campground.name %></strong> Campground</h1>
-    </header>
-    <main class="row text-center" id="newCampForm">
-        <form class="formPage" action="/campgrounds/<%= campground._id  %>/comments" method="POST">
-            <div class="form-group">
-                <textarea id="commentText" class="form-control mb-2" name="comment[text]" placeholder="What do you think about <%= campground.name %>?"></textarea>
-                <button type="submit" class="btn btn-info mb-2 btn-block">Comment</button>
-                <a class="mr-auto btn btn-sm btn-link mb-2 btn-block" href="/campgrounds/<%= campground._id  %>">Go Back</a>
-            </div>
-        </form>
-    </main>
+  <header class="jumbotron text-center p-2">
+    <h1>Add Your Review of <strong><%= campground.name %></strong> Campground</h1>
+  </header>
+  <main class="row text-center" id="newCampForm">
+    <form class="formPage" action="/campgrounds/<%= campground._id  %>/comments" method="POST">
+      <div class="form-group">
+        <textarea id="commentText" class="form-control mb-2" name="comment[text]" placeholder="What do you think about <%= campground.name %>?"></textarea>
+        <button type="submit" class="btn btn-info mb-2 btn-block">Comment</button>
+        <a class="mr-auto btn btn-sm btn-link mb-2 btn-block" href="/campgrounds/<%= campground._id  %>">Go Back</a>
+      </div>
+    </form>
+  </main>
 </div>
 <% include ../partials/footer %>
