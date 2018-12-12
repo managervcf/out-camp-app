@@ -14,9 +14,11 @@ const   User                = require("./models/user"),
         campgroundRoutes    = require("./routes/campgrounds"),
         indexRoutes         = require("./routes/index");
 
+// Import keys
+const keys = require('./config/keys');
+
 // Connect to MongoDB
-var dbUrl = process.env.DATABASEURL || "mongodb://localhost:27017/out_camp";
-mongoose.connect(dbUrl, {useNewUrlParser: true});     
+mongoose.connect(keys.databaseURI, {useNewUrlParser: true});     
 
 // Packages Configuration
 app.use(express.static(__dirname + "/public"));
@@ -50,6 +52,7 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 // Server Listener
-app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("OutCamp server is running...");
+const port = process.env.PORT || 3000;
+app.listen(port, function(){
+    console.log(`OutCamp server is running on port ${port}`);
 });

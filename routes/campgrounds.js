@@ -5,11 +5,14 @@ const   Campground      = require("../models/campground"),
         middleware      = require("../middleware"),
         nodeGeocoder    = require('node-geocoder');
 
+// Import keys
+const keys = require('../config/keys');
+
 // Geocoder Config
 var options = {
   provider: 'google',
   httpAdapter: 'https',
-  apiKey: process.env.GEOCODER_API_KEY,
+  apiKey: keys.geocoderAPIKey,
   formatter: null
 };
  
@@ -83,7 +86,7 @@ router.get("/:id", function(req, res) {
         if (err){
             console.log(err);
         } else {
-            res.render("campgrounds/show", {campground: camp});
+            res.render("campgrounds/show", {campground: camp, apiKey: keys.mapsAPIKey});
         }
     });
 });
